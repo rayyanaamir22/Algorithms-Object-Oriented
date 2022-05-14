@@ -1,6 +1,6 @@
 '''
 Name: Rayyan Aamir
-Date: May 13, 2022
+Date: May 14, 2022
 Program: Object Oriented Sorting and Searching
 '''
 
@@ -26,18 +26,17 @@ def main(): # Main function
     #----------------SORTING ALGORITHMS----------------
     
     # Insertion test
-    for i in range(10):
-      test = array[:]
-      startTime = timeit.default_timer()
-      ins.insertionSort(test, 'x')
-      #print('\nInsertion sorted array:', test) 
-      print(timeit.default_timer() - startTime)
-    '''
+    
+    startTime = timeit.default_timer()
+    ins.insertionSort(test, 'x')
+    print('\nInsertion sorted array:', test) 
+      
+    test = array[:] # Reset list to original for fair comparison
     # Builtin test
     startTime = timeit.default_timer()
     test.sort(key=lambda n: n.x) 
     print('\nBuiltin time:', timeit.default_timer() - startTime)
-    '''
+    
     #----------------DEFINE SEARCHING ALGORITHM---------
     
     print('\n')
