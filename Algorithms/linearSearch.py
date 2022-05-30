@@ -7,10 +7,8 @@ def iterativeLinearSearch(array, target, attribute): # Works
     # If target is found
     if array[i].__dict__[attribute] == target:
       return i # Return index
-    elif array[i].__dict__[attribute] != array[-1]: # If still being looped
-      continue # Keep going
-    else: 
-      return -1
+    
+  return -1 # Occurs if loop is completed
 
 # Recursive
 def recursiveLinearSearch(array, f, l, target, attribute): # Works
