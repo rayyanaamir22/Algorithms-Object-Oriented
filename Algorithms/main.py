@@ -1,6 +1,6 @@
 '''
 Name: Rayyan Aamir
-Date: May 14, 2022
+Date: May 30, 2022
 Program: Object Oriented Sorting and Searching
 '''
 
@@ -17,27 +17,27 @@ import dataGen as dg
 
 def main(): # Main function
   # Create array
-  array = dg.generateData(1000) 
+  test = dg.generateData(1000) # OBJECTS
   while True: # Program loop
     # Title
     print('OBJECT ORIENTED ALGORITHMS\n')
-    print(f'Original array: {array}\n')    
-  
+    print(f'Original array: {test[0:19]}...\n{test[-20:-1]}\n')    
+    
     #----------------SORTING ALGORITHMS----------------
     
     # Insertion test
-    
     startTime = timeit.default_timer()
     ins.insertionSort(test, 'x')
-    print('\nInsertion sorted array:', test) 
-      
-    test = array[:] # Reset list to original for fair comparison
+    print('\nInsertion time:', timeit.default_timer() - startTime)
+    
     # Builtin test
     startTime = timeit.default_timer()
     test.sort(key=lambda n: n.x) 
     print('\nBuiltin time:', timeit.default_timer() - startTime)
+  
+    print(f'\nSorted list: {test[0:19]}...\n{test[-20:-1]}\n')
     
-    #----------------DEFINE SEARCHING ALGORITHM---------
+    #-----------DEFINE SEARCHING ALGORITHM-------------
     
     print('\n')
     # Choose search method
@@ -64,28 +64,29 @@ def main(): # Main function
       except (TypeError, ValueError):
         print('Enter a number.')
   
-    #----------------RUN SEARCH ALGORITHM---------------
+    #----------------RUN SEARCH ALGORITHM--------------
   
     # recursiveLinearSearch() causes StackOverflowError with data larger than 1 000 units.
-    # recursiveBinarySearch() does not suffer this as it cuts the dataset in half, so to have it crash the data must be 10^304 units long.
+    # recursiveBinarySearch() does not suffer this as it cuts the dataset in half, so to have it crash the data must be 2^1000 (10^304) units long.
     
     print('\n')
+    print('Target is present at index: ', end='')
     startTime = timeit.default_timer() # Timer starts here
     
     if searchAlgorithm == 'LINEAR' and algorithmType == 'ITERATIVE': 
-      lin.iterativeLinearSearch(test, algorithmTarget, 'x')
+      print(lin.iterativeLinearSearch(test, algorithmTarget, 'x'))
       print('Algorithm time:', timeit.default_timer() - startTime)
     elif searchAlgorithm == 'LINEAR' and algorithmType == 'RECURSIVE': 
-      lin.recursiveLinearSearch(test, 0, len(test)-1, algorithmTarget, 'x')
+      print(lin.recursiveLinearSearch(test, 0, len(test)-1, algorithmTarget, 'x'))
       print('Algorithm time:', timeit.default_timer() - startTime)
     elif searchAlgorithm == 'BINARY' and algorithmType == 'ITERATIVE': 
-      bin.iterativeBinarySearch(test, 0, len(test)-1, algorithmTarget, 'x')
+      print(bin.iterativeBinarySearch(test, 0, len(test)-1, algorithmTarget, 'x'))
       print('Algorithm time:', timeit.default_timer() - startTime)
     elif searchAlgorithm == 'BINARY' and algorithmType == 'RECURSIVE': 
-      bin.recursiveBinarySearch(test, 0, len(test)-1, algorithmTarget, 'x')
+      print(bin.recursiveBinarySearch(test, 0, len(test)-1, algorithmTarget, 'x'))
       print('Algorithm time:', timeit.default_timer() - startTime)
 
-    #------------------------REUSE---------------------------
+    #------------------------REUSE---------------------
 
     if f.reuse('SEARCH'):
       os.system('clear')
